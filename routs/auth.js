@@ -1,0 +1,10 @@
+const express = require("express")
+const { signUp, signIn, addToFavourit, deletFromFavourit, addToCard, updateUser } = require("../controlers/authControls")
+const route = express.Router()
+route.post("/signup",signUp)
+route.post("/signin",signIn)
+route.post("/fav/:id",addToFavourit)
+route.get("/card/:id",addToCard)
+route.delete("/fav/:id",deletFromFavourit)
+route.put("/profile/:id",updateUser)
+module.exports=route

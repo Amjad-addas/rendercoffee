@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link href="https://unpkg.com/tailwindcss@latest/dist/tailwind.min.css" rel="stylesheet">
+    
+    <link href="../style/output.css" rel="stylesheet">
+    <link rel="stylesheet" href="../style/style.css">
+    <title>Produts</title>
+</head>
+<body>
+    <header id="header" class="fixed main-color flex w-full gap-3 items-start flex-1 p-4 justify-between  ">
+        <a href="/" class="logo cursor-pointer flex items-center gap-1 link a">
+            <img class="max-w-10 h-10" src="/img/mycoffee.png" alt="logo">
+            <h1 class="text-white h-7">My Coffee</h1>
+        </a>
+        <div id="links" class="links w-full  none flex justify-between flex-4  ">
+            <ul id="ul" class="flex gap-3 pt-1.5  ">
+                <li class="text-white a hover:pl-3.5">
+                    <a href="/">Home</a>
+                </li>
+                <li id="joinus" class="text-white cursor-pointer  relative flex a hover:pl-3.5">
+                    Join Us
+                    <svg class="w-8 h-8  text-gray-800 dark:text-white transform translate-y-[-4px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 10 4 4 4-4"/>
+                    </svg>
+
+                    <div  id="joinlinks" class="hidden absolute w-52 h-52 main-color justify-between  flex-col top-12">
+                        <a href="/profile" class="border-b-2 tshadow border-amber-50 p-4">Profile</a>
+                        <a href="/signin" class="border-b-2 tshadow border-amber-50 p-4">sign in</a>
+                        <a href="/signup" class="p-4 border-b-2 tshadow border-amber-50">sign up</a>
+
+                    </div>
+                </li >
+                <li class="text-white a hover:pl-3.5">
+                    <a href="/coffee">Coffee</a>
+                </li>
+                <li id="joinus2"  class="text-white flex relative cursor-pointer a hover:pl-3.5">
+                    Products
+                    <svg class="transform translate-y-[-4px] w-8 h-8 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 10 4 4 4-4"/>
+                    </svg>
+
+                    <div id="joinlinks2" class="hidden absolute w-52  main-color justify-between  flex-col top-12 ">
+
+                        <% for(let i=0;i<3;i++){ %>
+                        <a href="/product/<%= products[i]._id  %>" class= "tshadow border-b-2 border-amber-50 p-4"><%= products[i].name  %></a>
+                        <% } %>
+                        
+                        <a href="/products" class="p-4 tshadow">All Products</a>
+                    </div>
+                </li>
+                <li class="text-white a hover:pl-3.5">
+                    <a href="/about">About</a>
+                </li>
+            </ul>
+            <div class="search cursor-pointer flex items-center gap-3">
+                <div>
+                    <a href="/card/">
+                        <svg class="w-[48px] h-[48px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" d="M4 4a1 1 0 0 1 1-1h1.5a1 1 0 0 1 .979.796L7.939 6H19a1 1 0 0 1 .979 1.204l-1.25 6a1 1 0 0 1-.979.796H9.605l.208 1H17a3 3 0 1 1-2.83 2h-2.34a3 3 0 1 1-4.009-1.76L5.686 5H5a1 1 0 0 1-1-1Z" clip-rule="evenodd"/>
+                        </svg>
+
+                    </a>
+                </div>
+                <form action="/search/" method="GET" class=" flex gap-2 items-center ">
+                    <input name="name" class="bg-white h-10 rounded-md outline-none pl-2
+                    " type="text">
+                    <div class="btn-search flex items-center gap-2 p-2 rounded-md">
+                        <button type="submit" class="cursor-pointer">SEARCH</button>
+                        <span>
+                            <svg class="w-6 h-6 text-black " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13v-2a1 1 0 0 0-1-1h-.757l-.707-1.707.535-.536a1 1 0 0 0 0-1.414l-1.414-1.414a1 1 0 0 0-1.414 0l-.536.535L14 4.757V4a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v.757l-1.707.707-.536-.535a1 1 0 0 0-1.414 0L4.929 6.343a1 1 0 0 0 0 1.414l.536.536L4.757 10H4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h.757l.707 1.707-.535.536a1 1 0 0 0 0 1.414l1.414 1.414a1 1 0 0 0 1.414 0l.536-.535 1.707.707V20a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-.757l1.707-.708.536.536a1 1 0 0 0 1.414 0l1.414-1.414a1 1 0 0 0 0-1.414l-.535-.536.707-1.707H20a1 1 0 0 0 1-1Z"/>
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+                                </svg>
+                        </span>
+                    </div>
+                </form>
+
+            </div>
+
+
+        </div>
+            <div id="lines" class=" lgnone absolute right-2.5">
+                <svg class=" w-[38px] h-[38px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 6H6m12 4H6m12 4H6m12 4H6"/>
+                </svg>
+
+            </div>
+    </header>
+    <main>
+        <div class=" lg:p-26">
+            <div class="mt-20 lg:m-0 lg:hv flex flex-col items-center bg-main p-10   justify-center">
+                <h1 class="block text-3xl lg:text-5xl">Product Details</h1> 
+                <hr class="h-0.5 mt-7 w-full">
+                <div class="md:flex gap-3 mt-4 p-3.5 bg-white">
+                    <img id="proimg" class="flex-1 w-full" src="<%= product.img  %>" alt="">
+                    <div class="flex-3">
+                        <h1   id="proname" class="pt-4 text-xl"><%= product.name  %></h1>
+                        <hr class="mt-4 text-xl">
+                        <h1  class="mt-4 text-xl"><%= product.description  %></h1>
+                        <hr class="mt-4 text-xl">
+                        <h1  class="mt-4 text-xl flex gap-2 mb-4">Current Price: <span id="proprice" class="flex justify-center items-center bg-black w-10 h-10 text-white rounded-full"><%= product.price  %>$</span></h1>
+                        <hr class="pt-4 text-xl">
+                        <div class="flex gap-3" >
+                          
+                        <form action="/auth/card/<%= product._id  %>/" method="GET">
+                            
+                        <button type="submit"   class="cursor-pointer s text-2xl mt-3 bg-amber-300 p-2 rounded-xl">Add To Card</button>
+
+                          </form>
+                            <% if(isfav==1){ %>
+                                <form action="/auth/fav/<%= product._id  %>?_method=DELETE" method="post">
+                                <% } %>
+                                 <% if(isfav==0){ %>
+                                <form action="/auth/fav/<%= product._id  %>" method="post">
+                                <% } %>
+                            <button  type="submit" class="cursor-pointer s text-2xl mt-3 bg-amber-300 p-2 rounded-xl">
+
+                                <svg 
+                                <% if(isfav==1){ %>
+                                class="w-[28px] h-[28px] text-white" 
+                                <% } %>
+                                <% if(isfav==0){ %>
+                                class="w-[28px] h-[28px] text-black" 
+                                <% } %>
+                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M13.849 4.22c-.684-1.626-3.014-1.626-3.698 0L8.397 8.387l-4.552.361c-1.775.14-2.495 2.331-1.142 3.477l3.468 2.937-1.06 4.392c-.413 1.713 1.472 3.067 2.992 2.149L12 19.35l3.897 2.354c1.52.918 3.405-.436 2.992-2.15l-1.06-4.39 3.468-2.938c1.353-1.146.633-3.336-1.142-3.477l-4.552-.36-1.754-4.17Z"/>
+                                </svg>
+
+
+
+                            
+                            </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script
+    src="/main.js">
+
+</script>
+</body>
+</html>

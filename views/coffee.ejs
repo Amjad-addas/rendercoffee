@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link href="https://unpkg.com/tailwindcss@latest/dist/tailwind.min.css" rel="stylesheet">
+    
+    <link href="../style/output.css" rel="stylesheet">
+    <link rel="stylesheet" href="../style/style.css">
+    <title>coffee</title>
+</head>
+<body>
+    <header id="header" class="fixed main-color flex w-full gap-3 items-start flex-1 p-4 justify-between  ">
+        <a href="/" class="logo cursor-pointer flex items-center gap-1 link a">
+            <img class="max-w-10 h-10" src="./img/mycoffee.png" alt="logo">
+            <h1 class="text-white h-7">My Coffee</h1>
+        </a>
+        <div id="links" class="links w-full  none flex justify-between flex-4  ">
+            <ul id="ul" class="flex gap-3 pt-1.5  ">
+                <li class="text-white a hover:pl-3.5">
+                    <a href="/">Home</a>
+                </li>
+                <li id="joinus" class="text-white cursor-pointer  relative flex a hover:pl-3.5">
+                    Join Us
+                    <svg class="w-8 h-8  text-gray-800 dark:text-white transform translate-y-[-4px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 10 4 4 4-4"/>
+                    </svg>
+
+                    <div  id="joinlinks" class="hidden absolute w-52 h-52 main-color justify-between  flex-col top-12">
+                        <a href="/profile" class="border-b-2 tshadow border-amber-50 p-4">Profile</a>
+                        <a href="/signin" class="border-b-2 tshadow border-amber-50 p-4">sign in</a>
+                        <a href="/signup" class="p-4 border-b-2 tshadow border-amber-50">sign up</a>
+
+                    </div>
+                </li >
+                <li class="text-white a hover:pl-3.5">
+                    <a href="/coffee">Coffee</a>
+                </li>
+                <li id="joinus2"  class="text-white flex relative cursor-pointer a hover:pl-3.5">
+                    Products
+                    <svg class="transform translate-y-[-4px] w-8 h-8 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 10 4 4 4-4"/>
+                    </svg>
+
+                    <div id="joinlinks2" class="hidden absolute w-52  main-color justify-between  flex-col top-12 ">
+
+                        <% for(let i=0;i<3;i++){ %>
+                        <a href="/product/<%= products[i]._id  %>" class= "tshadow border-b-2 border-amber-50 p-4"><%= products[i].name  %></a>
+                        <% } %>
+                        
+                        <a href="/products" class="p-4 tshadow">All Products</a>
+                    </div>
+                </li>
+                <li class="text-white a hover:pl-3.5">
+                    <a href="/about">About</a>
+                </li>
+            </ul>
+            <div class="search cursor-pointer flex items-center gap-3">
+                <div>
+                    <a href="/card/">
+                        <svg class="w-[48px] h-[48px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" d="M4 4a1 1 0 0 1 1-1h1.5a1 1 0 0 1 .979.796L7.939 6H19a1 1 0 0 1 .979 1.204l-1.25 6a1 1 0 0 1-.979.796H9.605l.208 1H17a3 3 0 1 1-2.83 2h-2.34a3 3 0 1 1-4.009-1.76L5.686 5H5a1 1 0 0 1-1-1Z" clip-rule="evenodd"/>
+                        </svg>
+
+                    </a>
+                </div>
+                <form action="/search/" method="GET" class=" flex gap-2 items-center ">
+                    <input name="name" class="bg-white h-10 rounded-md outline-none pl-2
+                    " type="text">
+                    <div class="btn-search flex items-center gap-2 p-2 rounded-md">
+                        <button type="submit" class="cursor-pointer">SEARCH</button>
+                        <span>
+                            <svg class="w-6 h-6 text-black " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13v-2a1 1 0 0 0-1-1h-.757l-.707-1.707.535-.536a1 1 0 0 0 0-1.414l-1.414-1.414a1 1 0 0 0-1.414 0l-.536.535L14 4.757V4a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v.757l-1.707.707-.536-.535a1 1 0 0 0-1.414 0L4.929 6.343a1 1 0 0 0 0 1.414l.536.536L4.757 10H4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h.757l.707 1.707-.535.536a1 1 0 0 0 0 1.414l1.414 1.414a1 1 0 0 0 1.414 0l.536-.535 1.707.707V20a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-.757l1.707-.708.536.536a1 1 0 0 0 1.414 0l1.414-1.414a1 1 0 0 0 0-1.414l-.535-.536.707-1.707H20a1 1 0 0 0 1-1Z"/>
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+                                </svg>
+                        </span>
+                    </div>
+                </form>
+
+            </div>
+
+
+        </div>
+            <div id="lines" class=" lgnone absolute right-2.5">
+                <svg class=" w-[38px] h-[38px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 6H6m12 4H6m12 4H6m12 4H6"/>
+                </svg>
+
+            </div>
+    </header>
+    <main>
+<div class="pt-32 pb-20 lg:p-14 bg-white ">
+                <div class="w-full p-5 pt-20 bg-main flex flex-col items-center lg:p-20 justify-center">
+
+                    <h1 class="text-xl t-color flex lg:text-2xl font-bold items-center gap-2">
+                        <svg class="t-color w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                        </svg>
+                        Coffee is very important
+                    </h1>
+                    
+                        <div class="w-full">
+                            <hr class="mt-3.5 text-amber-900 w-full h-0.5">
+                            <div class=" flex items-start gap-7 flex-col justify-start"> 
+                                <span class="flex items-center gap-1 text-xl">
+                                    <svg class="t-color w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" d="M3 4a1 1 0 0 0-.822 1.57L6.632 12l-4.454 6.43A1 1 0 0 0 3 20h13.153a1 1 0 0 0 .822-.43l4.847-7a1 1 0 0 0 0-1.14l-4.847-7a1 1 0 0 0-.822-.43H3Z" clip-rule="evenodd"/>
+                                    </svg>
+
+                                    My Coffee company is a pioneer in the field of coffee for more than 50 years
+                                </span>
+                                <span class="flex items-center gap-1 text-xl">
+                                    <svg class="t-color w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" d="M3 4a1 1 0 0 0-.822 1.57L6.632 12l-4.454 6.43A1 1 0 0 0 3 20h13.153a1 1 0 0 0 .822-.43l4.847-7a1 1 0 0 0 0-1.14l-4.847-7a1 1 0 0 0-.822-.43H3Z" clip-rule="evenodd"/>
+                                    </svg>
+
+                                        Caffeine stimulates your nervous system, signaling fat cells to break down body fat.                  
+                                </span>
+                                <span class="flex items-center gap-1 text-xl">
+                                    <svg class="t-color w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" d="M3 4a1 1 0 0 0-.822 1.57L6.632 12l-4.454 6.43A1 1 0 0 0 3 20h13.153a1 1 0 0 0 .822-.43l4.847-7a1 1 0 0 0 0-1.14l-4.847-7a1 1 0 0 0-.822-.43H3Z" clip-rule="evenodd"/>
+                                    </svg>
+
+                                    Coffee appears to be protective against two types of cancer: liver and colorectal cancer.            
+                                </span>
+
+                                <span class="flex items-center gap-1 text-xl">
+                                    <svg class="t-color w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" d="M3 4a1 1 0 0 0-.822 1.57L6.632 12l-4.454 6.43A1 1 0 0 0 3 20h13.153a1 1 0 0 0 .822-.43l4.847-7a1 1 0 0 0 0-1.14l-4.847-7a1 1 0 0 0-.822-.43H3Z" clip-rule="evenodd"/>
+                                    </svg>
+
+                                    Coffee Could Help Reduce Your Risk of Diabetes.
+                                </span>
+                                <span class="flex items-center gap-1 text-xl">
+                                    <svg class="t-color w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" d="M3 4a1 1 0 0 0-.822 1.57L6.632 12l-4.454 6.43A1 1 0 0 0 3 20h13.153a1 1 0 0 0 .822-.43l4.847-7a1 1 0 0 0 0-1.14l-4.847-7a1 1 0 0 0-.822-.43H3Z" clip-rule="evenodd"/>
+                                    </svg>
+
+                                    Coffee Could Help Reverse Liver Damage from Drinking
+                                </span>
+                                <span class="flex items-center gap-1 text-xl">
+                                    <svg class="t-color w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" d="M3 4a1 1 0 0 0-.822 1.57L6.632 12l-4.454 6.43A1 1 0 0 0 3 20h13.153a1 1 0 0 0 .822-.43l4.847-7a1 1 0 0 0 0-1.14l-4.847-7a1 1 0 0 0-.822-.43H3Z" clip-rule="evenodd"/>
+                                    </svg>
+
+                                    Coffee Could Reduce Your Risk of Parkinson's Disease
+                                </span>
+                                <span class="flex items-center gap-1 text-xl">
+                                    <svg class="t-color w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" d="M3 4a1 1 0 0 0-.822 1.57L6.632 12l-4.454 6.43A1 1 0 0 0 3 20h13.153a1 1 0 0 0 .822-.43l4.847-7a1 1 0 0 0 0-1.14l-4.847-7a1 1 0 0 0-.822-.43H3Z" clip-rule="evenodd"/>
+                                    </svg>
+
+                                    Coffee Could Make Physical Activity Feel Easier.
+                                </span>
+                                <span class="flex items-center gap-1 text-xl">
+                                    <svg class="t-color w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" d="M3 4a1 1 0 0 0-.822 1.57L6.632 12l-4.454 6.43A1 1 0 0 0 3 20h13.153a1 1 0 0 0 .822-.43l4.847-7a1 1 0 0 0 0-1.14l-4.847-7a1 1 0 0 0-.822-.43H3Z" clip-rule="evenodd"/>
+                                    </svg>
+
+                                    My Coffee company is a pioneer in the field of coffee for more than 50 years
+                                </span>
+                                <span class="flex items-center gap-1 text-xl">
+                                    <svg class="t-color w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" d="M3 4a1 1 0 0 0-.822 1.57L6.632 12l-4.454 6.43A1 1 0 0 0 3 20h13.153a1 1 0 0 0 .822-.43l4.847-7a1 1 0 0 0 0-1.14l-4.847-7a1 1 0 0 0-.822-.43H3Z" clip-rule="evenodd"/>
+                                    </svg>
+
+                                        Caffeine stimulates your nervous system, signaling fat cells to break down body fat.                  
+                                </span>
+                                <span class="flex items-center gap-1 text-xl">
+                                    <svg class="t-color w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" d="M3 4a1 1 0 0 0-.822 1.57L6.632 12l-4.454 6.43A1 1 0 0 0 3 20h13.153a1 1 0 0 0 .822-.43l4.847-7a1 1 0 0 0 0-1.14l-4.847-7a1 1 0 0 0-.822-.43H3Z" clip-rule="evenodd"/>
+                                    </svg>
+
+                                    Coffee appears to be protective against two types of cancer: liver and colorectal cancer.            
+                                </span>
+
+                                <span class="flex items-center gap-1 text-xl">
+                                    <svg class="t-color w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" d="M3 4a1 1 0 0 0-.822 1.57L6.632 12l-4.454 6.43A1 1 0 0 0 3 20h13.153a1 1 0 0 0 .822-.43l4.847-7a1 1 0 0 0 0-1.14l-4.847-7a1 1 0 0 0-.822-.43H3Z" clip-rule="evenodd"/>
+                                    </svg>
+
+                                    Coffee Could Help Reduce Your Risk of Diabetes.
+                                </span>
+                                <span class="flex items-center gap-1 text-xl">
+                                    <svg class="t-color w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" d="M3 4a1 1 0 0 0-.822 1.57L6.632 12l-4.454 6.43A1 1 0 0 0 3 20h13.153a1 1 0 0 0 .822-.43l4.847-7a1 1 0 0 0 0-1.14l-4.847-7a1 1 0 0 0-.822-.43H3Z" clip-rule="evenodd"/>
+                                    </svg>
+
+                                    Coffee Could Help Reverse Liver Damage from Drinking
+                                </span>
+                                <span class="flex items-center gap-1 text-xl">
+                                    <svg class="t-color w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" d="M3 4a1 1 0 0 0-.822 1.57L6.632 12l-4.454 6.43A1 1 0 0 0 3 20h13.153a1 1 0 0 0 .822-.43l4.847-7a1 1 0 0 0 0-1.14l-4.847-7a1 1 0 0 0-.822-.43H3Z" clip-rule="evenodd"/>
+                                    </svg>
+
+                                    Coffee Could Reduce Your Risk of Parkinson's Disease
+                                </span>
+                                <span class="flex items-center gap-1 text-xl">
+                                    <svg class="t-color w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" d="M3 4a1 1 0 0 0-.822 1.57L6.632 12l-4.454 6.43A1 1 0 0 0 3 20h13.153a1 1 0 0 0 .822-.43l4.847-7a1 1 0 0 0 0-1.14l-4.847-7a1 1 0 0 0-.822-.43H3Z" clip-rule="evenodd"/>
+                                    </svg>
+
+                                    Coffee Could Make Physical Activity Feel Easier.
+                                </span>
+                        </div>
+                   
+
+                </div>
+</div>
+    </main>
+    <script
+    src="main.js"></script>
+</body>
+</html>
