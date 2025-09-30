@@ -9,7 +9,7 @@ const authpath = require("./routs/auth")
 const cookieParser = require('cookie-parser');
 
 
-mongoose.connect("mongodb+srv://mj:mj123456@cluster0.0vrbjda.mongodb.net/").then(
+mongoose.connect("mongodb+srv://amjad:amjad@cluster0.2o1ygkf.mongodb.net/").then(
     ()=>console.log("Connction completd")
 ).catch(
     (err)=>console.log(`connection failed ${err}`)
